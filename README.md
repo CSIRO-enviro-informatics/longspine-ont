@@ -22,7 +22,7 @@ This model declares ony a couple of its own classes and properties and inherits 
 ## Example
 An example:
 
-This overarching model relates the example fact that a *Government Unit X* is associated with a *Function Y* like this:
+This overarching model would relate the example fact that *Government Unit X* is associated with *Function Y* like this:
 
 `<GovernmentStructuralUnit_X> <assigned> <GovernmentFunction_Y> .`
 
