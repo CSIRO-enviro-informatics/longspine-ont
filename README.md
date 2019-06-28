@@ -19,6 +19,11 @@ This model declares ony a couple of its own classes and properties and inherits 
 * **[longspine.ttl](longspine.ttl)** - the formal definition of this model, stored according to the [Resource Description Framework (RDF)](https://www.w3.org/2001/sw/wiki/RDF) in the (turtle)[https://www.w3.org/TR/turtle/] file format
 * [overarching-model.svg](overarching-model.svg) - the overview diagram shown in Figure 1
 
+
+## Ontology definition
+![](longspine.svg)  
+**Figure 2**: Ontology diagram of the LongSpine Ontology
+
 ## Example
 An example:
 

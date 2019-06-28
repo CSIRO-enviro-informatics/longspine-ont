@@ -1,0 +1,23 @@
+# This file contains mappings between LongSpine Ontology classes and classes
+# within LongSpine's Component datasets
+
+@prefix crs: <http://linked.data.gov.au/def/aao#> .
+@prefix crs: <http://linked.data.gov.au/def/crs#> .
+@prefix long: <http://linked.data.gov.au/def/longspine#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+# CRS
+crs:Function                  rdfs:subClassOf     long:GovernmentFunction .
+crs:CommonwealthAgency        rdfs:subClassOf     long:GovernmentStructuralUnit .
+crs:CommonwealthOrganisation  rdfs:subClassOf     long:GovernmentStructuralUnit .
+
+
+# AAO
+aao:Matter                    rdfs:subClassOf     long:GovernmentFunction .
+aao:matterDealtWith           rdfs:subPropertyOf  long:assigned .
+aao:responsibleDepartment     rdfs:subPropertyOf  long:assignedTo .
+
+
+# AUORG
+auorg:Entity                  rdfs:subClassOf     long:GovernmentStructuralUnit .
