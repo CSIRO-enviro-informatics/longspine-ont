@@ -25,6 +25,11 @@ Figure 1 is an informal overview of the content of this ontology. See Figure 2 f
 * [CSIRO_Logo.svg](CSIRO_Logo.svg) - CSIRO's logo for the branding of this repo and the ontology (top of this file)
 
 
+
+## Ontology definition
+![](longspine.svg)  
+**Figure 2**: Ontology diagram of the LongSpine Ontology
+
 ## Example
 An example:
 

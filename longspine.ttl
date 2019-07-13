@@ -12,7 +12,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#Agent> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix time: <http://www.w3.org/2006/time> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @base <http://linked.data.gov.au/def/longspine> .
 
 <http://linked.data.gov.au/def/longspine> rdf:type owl:Ontology ;
@@ -38,7 +38,8 @@
 This [Web Ontology Language (OWL)](https://www.w3.org/2001/sw/wiki/OWL) model is a high-level (abstract or 'upper') model that describes the general classes of object and relations between them that all [LongSpine](https://longspine.cat) *Datasets* implement.
 
 This model declares ony a couple of its own classes and properties and inherits most of its content from existing, well-known and models, such as [Thge Organization Ontololgy](https://www.w3.org/TR/vocab-org/)."""@en ;
-                                           rdfs:seeAlso "The GitHub repository containing addition documentation for this ontology is: http://github.com/CSIRO-enviro-informatics/longspine-ont"@en .
+                                           rdfs:seeAlso "The GitHub repository containing addition documentation for this ontology is: http://github.com/CSIRO-enviro-informatics/longspine-ont"@en ;
+                                           dct:license <https://creativecommons.org/licenses/by/4.0/> .
 
 #################################################################
 #    Annotation properties
