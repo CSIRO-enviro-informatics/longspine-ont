@@ -1,159 +1,32 @@
+# baseURI: http://linked.data.gov.au/def/longspine
+# imports: http://linked.data.gov.au/def/aao
+# imports: http://linked.data.gov.au/def/auorg/
+# imports: http://linked.data.gov.au/def/crs
+# imports: http://www.w3.org/2004/02/skos/core#
+# imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/org#
+# prefix: long
+
 @prefix : <http://linked.data.gov.au/def/longspine#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sdo: <https://schema.org/> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix long: <http://linked.data.gov.au/def/longspine#> .
-@prefix prov: <http://www.w3.org/ns/prov#Agent> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix time: <http://www.w3.org/2006/time#> .
-@base <http://linked.data.gov.au/def/longspine> .
 @prefix aao: <http://linked.data.gov.au/def/aao#> .
 @prefix agrif: <http://linked.data.gov.au/def/agrif#> .
 @prefix auorg: <http://linked.data.gov.au/def/auorg/> .
 @prefix crs: <http://linked.data.gov.au/def/crs#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix leg: <http://linked.data.gov.au/def/legislation#> .
-
-<http://linked.data.gov.au/def/longspine> rdf:type owl:Ontology ;
-                                           owl:versionIRI long: ;
-                                           owl:imports skos: ,
-                                                       <http://www.w3.org/2006/time> ,
-                                                       org: ;
-  owl:imports <http://linked.data.gov.au/def/aao> ;
-  owl:imports auorg: ;
-  owl:imports <http://linked.data.gov.au/def/crs> ;
-                                           dct:created "2019-06-27"^^xsd:date ;
-                                           dct:creator [ sdo:email "nicholas.car@csiro.au" ;
-                                                         sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-                                                         sdo:memberOf [ sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
-                                                                        sdo:name "CSIRO"
-                                                                      ] ;
-                                                         sdo:name "Nicholas J. Car"
-                                                       ] , <http://orcid.org/0000-0002-3884-3420> ;
-                                           dct:modified "2019-06-27"^^xsd:date ;
-                                           dct:publisher [ sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
-                                                           sdo:name "CSIRO"
-                                                         ] ;
-                                           dct:title "LongSpine Overarching Ontology" ;
-                                           rdfs:comment """An abstract model of the Longitidunal Spine of Government Functions project's main content.
-
-This [Web Ontology Language (OWL)](https://www.w3.org/2001/sw/wiki/OWL) model is a high-level (abstract or 'upper') model that describes the general classes of object and relations between them that all [LongSpine](https://longspine.cat) *Datasets* implement.
-
-This model declares ony a couple of its own classes and properties and inherits most of its content from existing, well-known and models, such as [Thge Organization Ontololgy](https://www.w3.org/TR/vocab-org/)."""@en ;
-  rdfs:comment """Integration of AAO, CRS, RDA and PBS models in order to track the longitudinal state of AU Government functions; 
-
-This graph also contains provisional mappings/linksets, pending refactoring.""" ;
-                                           rdfs:seeAlso "The GitHub repository containing addition documentation for this ontology is: http://github.com/CSIRO-enviro-informatics/longspine-ont"@en ;
-                                           dct:license <https://creativecommons.org/licenses/by/4.0/> .
-
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://purl.org/dc/terms/publisher
-dct:publisher rdf:type owl:AnnotationProperty .
-
-
-###  https://schema.org/email
-sdo:email rdf:type owl:AnnotationProperty .
-
-
-###  https://schema.org/identifier
-sdo:identifier rdf:type owl:AnnotationProperty .
-
-
-###  https://schema.org/memberOf
-sdo:memberOf rdf:type owl:AnnotationProperty .
-
-
-###  https://schema.org/name
-sdo:name rdf:type owl:AnnotationProperty .
-
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  http://linked.data.gov.au/def/longspine#assigned
-long:assigned rdf:type owl:ObjectProperty ;
-              owl:inverseOf long:assignedTo ;
-              rdf:type owl:TransitiveProperty ;
-              rdfs:domain long:GovernmentStructuralUnit ;
-              dct:title "assigned" ;
-              skos:definition "To select for a duty" ;
-              skos:scopeNote "Government Structural Units are assigned Government Functions"@en .
-
-
-###  http://linked.data.gov.au/def/longspine#assignedTo
-long:assignedTo rdf:type owl:ObjectProperty ,
-                         owl:TransitiveProperty ;
-                rdfs:range long:GovernmentStructuralUnit ;
-                dct:title "assignedTo" ;
-                skos:definition "To select for a duty" ;
-                skos:scopeNote "Government Functions are assigned to Government Structural Units"@en .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://linked.data.gov.au/def/longspine#Assignment
-long:Assignment rdf:type owl:Class ;
-                dct:title "Assignment" ;
-                skos:definition "A temporally-scoped selection for duty."@en ;
-                skos:scopeNote "This class is to be used when the assignment of a GovernmentFunction to a GovernmentStructuralUnit needs to be scoped temporally. If temporality in the assignment is not required (i.e. it is an eternal or timeless assignment or the temporaility is unknown) then the direct property assignedTo should be used between the GovernmentFunction and the GovernmentStructuralUnit or assigned to the invers."@en .
-
-
-###  http://linked.data.gov.au/def/longspine#GovernmentFunction
-long:GovernmentFunction rdf:type owl:Class ;
-                        rdfs:subClassOf dcat:Role ;
-                        dct:title "Government Function" ;
-                        skos:definition "A function performed by a Government Structural Unit to carry out the role assigned to it."@en .
-
-
-###  http://linked.data.gov.au/def/longspine#GovernmentStructuralUnit
-long:GovernmentStructuralUnit rdf:type owl:Class ;
-                              rdfs:subClassOf prov:Agent ;
-                              dct:title "Government Structural Unit" ;
-                              skos:definition "A unit of government, of any size and carrying any form of authority."@en .
-
-
-###  http://www.w3.org/2006/timeTemporalEntity
-time:TemporalEntity rdf:type owl:Class ;
-                    skos:altLabel "Epoch" ,
-                                  "Era" ;
-                    skos:definition "A particular period of time marked by distinctive features, events." ;
-                    skos:scopeNote "This is the Time Ontology in OWL's TemporalEntity class but is presented here with alternate labels (Epoch, Era) to allow for the use of common time period naming terms."@en .
-
-
-###  http://www.w3.org/ns/dcat#Role
-dcat:Role rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#AgentAgent
-prov:Agent rdf:type owl:Class .
-
-
-[ sdo:email "nicholas.car@csiro.au" ;
-  sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-  sdo:memberOf [ sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
-                 sdo:name "CSIRO"
-               ] ;
-  sdo:name "Nicholas J. Car"
-] .
-
-[ sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
-   sdo:name "CSIRO"
- ] .
-
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+@prefix long: <http://linked.data.gov.au/def/longspine#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#Agent> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 aao:Action
   rdfs:subClassOf [
@@ -193,7 +66,7 @@ crs:CommonwealthAgency
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:hasValue auorg:CommonwealthOfAustralia ;
-      owl:onProperty <http://www.w3.org/ns/org#linkedTo> ;
+      owl:onProperty org:linkedTo ;
     ] ;
 .
 crs:CommonwealthOrganisation
@@ -201,11 +74,63 @@ crs:CommonwealthOrganisation
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:hasValue auorg:CommonwealthOfAustralia ;
-      owl:onProperty <http://www.w3.org/ns/org#linkedTo> ;
+      owl:onProperty org:linkedTo ;
     ] ;
 .
 crs:CommonwealthPerson
   rdfs:subClassOf <http://www.w3.org/ns/prov#Person> ;
+.
+<http://linked.data.gov.au/def/longspine>
+  a owl:Ontology ;
+  dct:created "2019-06-27"^^xsd:date ;
+  dct:creator <http://orcid.org/0000-0002-3884-3420> ;
+  dct:creator [
+      sdo:email "nicholas.car@csiro.au" ;
+      sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+      sdo:memberOf [
+          sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+          sdo:name "CSIRO" ;
+        ] ;
+      sdo:name "Nicholas J. Car" ;
+    ] ;
+  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dct:modified "2019-06-27"^^xsd:date ;
+  dct:publisher [
+      sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+      sdo:name "CSIRO" ;
+    ] ;
+  dct:title "LongSpine Overarching Ontology" ;
+  rdfs:comment """An abstract model of the Longitidunal Spine of Government Functions project's main content.
+
+This [Web Ontology Language (OWL)](https://www.w3.org/2001/sw/wiki/OWL) model is a high-level (abstract or 'upper') model that describes the general classes of object and relations between them that all [LongSpine](https://longspine.cat) *Datasets* implement.
+
+This model declares ony a couple of its own classes and properties and inherits most of its content from existing, well-known and models, such as [Thge Organization Ontololgy](https://www.w3.org/TR/vocab-org/), along with the AAO, CRS, RDA and PBS models."""@en ;
+  rdfs:seeAlso "The GitHub repository containing addition documentation for this ontology is: http://github.com/CSIRO-enviro-informatics/longspine-ont"@en ;
+  owl:imports <http://linked.data.gov.au/def/aao> ;
+  owl:imports auorg: ;
+  owl:imports <http://linked.data.gov.au/def/crs> ;
+  owl:imports skos: ;
+  owl:imports <http://www.w3.org/2006/time> ;
+  owl:imports org: ;
+  owl:versionIRI long: ;
+.
+long:Assignment
+  a owl:Class ;
+  dct:title "Assignment" ;
+  skos:definition "A temporally-scoped selection for duty."@en ;
+  skos:scopeNote "This class is to be used when the assignment of a GovernmentFunction to a GovernmentStructuralUnit needs to be scoped temporally. If temporality in the assignment is not required (i.e. it is an eternal or timeless assignment or the temporaility is unknown) then the direct property assignedTo should be used between the GovernmentFunction and the GovernmentStructuralUnit or assigned to the invers."@en ;
+.
+long:GovernmentFunction
+  a owl:Class ;
+  dct:title "Government Function" ;
+  rdfs:subClassOf dcat:Role ;
+  skos:definition "A function performed by a Government Structural Unit to carry out the role assigned to it."@en ;
+.
+long:GovernmentStructuralUnit
+  a owl:Class ;
+  dct:title "Government Structural Unit" ;
+  rdfs:subClassOf <http://www.w3.org/ns/prov#AgentAgent> ;
+  skos:definition "A unit of government, of any size and carrying any form of authority."@en ;
 .
 long:Responsibility
   a owl:Class ;
@@ -223,6 +148,23 @@ long:Responsibility
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty agrif:responsibleParty ;
     ] ;
+.
+long:assigned
+  a owl:ObjectProperty ;
+  a owl:TransitiveProperty ;
+  dct:title "assigned" ;
+  rdfs:domain long:GovernmentStructuralUnit ;
+  owl:inverseOf long:assignedTo ;
+  skos:definition "To select for a duty" ;
+  skos:scopeNote "Government Structural Units are assigned Government Functions"@en ;
+.
+long:assignedTo
+  a owl:ObjectProperty ;
+  a owl:TransitiveProperty ;
+  dct:title "assignedTo" ;
+  rdfs:range long:GovernmentStructuralUnit ;
+  skos:definition "To select for a duty" ;
+  skos:scopeNote "Government Functions are assigned to Government Structural Units"@en ;
 .
 long:definedByAAO
   a owl:ObjectProperty ;
@@ -248,4 +190,44 @@ long:responsibleDuring
   rdfs:label "responsible during time period" ;
   rdfs:subPropertyOf dct:temporal ;
 .
-
+dct:publisher
+  a owl:AnnotationProperty ;
+.
+time:TemporalEntity
+  a owl:Class ;
+  skos:altLabel "Epoch" ;
+  skos:altLabel "Era" ;
+  skos:definition "A particular period of time marked by distinctive features, events." ;
+  skos:scopeNote "This is the Time Ontology in OWL's TemporalEntity class but is presented here with alternate labels (Epoch, Era) to allow for the use of common time period naming terms."@en ;
+.
+dcat:Role
+  a owl:Class ;
+.
+<http://www.w3.org/ns/prov#AgentAgent>
+  a owl:Class ;
+.
+sdo:email
+  a owl:AnnotationProperty ;
+.
+sdo:identifier
+  a owl:AnnotationProperty ;
+.
+sdo:memberOf
+  a owl:AnnotationProperty ;
+.
+sdo:name
+  a owl:AnnotationProperty ;
+.
+[
+  sdo:email "nicholas.car@csiro.au" ;
+  sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+  sdo:memberOf [
+      sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+      sdo:name "CSIRO" ;
+    ] ;
+  sdo:name "Nicholas J. Car" ;
+].
+[
+  sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+  sdo:name "CSIRO" ;
+].
