@@ -14,6 +14,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @base <http://linked.data.gov.au/def/longspine> .
+@prefix aao: <http://linked.data.gov.au/def/aao#> .
+@prefix agrif: <http://linked.data.gov.au/def/agrif#> .
+@prefix auorg: <http://linked.data.gov.au/def/auorg/> .
+@prefix crs: <http://linked.data.gov.au/def/crs#> .
+@prefix leg: <http://linked.data.gov.au/def/legislation#> .
 
 <http://linked.data.gov.au/def/longspine> rdf:type owl:Ontology ;
                                            owl:versionIRI long: ;
